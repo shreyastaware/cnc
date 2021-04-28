@@ -1,14 +1,29 @@
 % This is a CNC Code to 3D Machined Surface Generator
 % Instructions for use:
-% Keep this file and the code file in the same directory/ folder
-% Add the file name to the file name variable in the 3rd from the start 
-% of the MATLAB Code
-% this code could be updated later with modifications
-% https://github.com/shreyastaware/cnc
+% 1. Keep this file and the code file (which can be of .txt or .NC or any 
+%    readable format file) in the same directory/ folder
+% 2. Add the file name to the 'filename' variable in the 3rd line 
+%    from the start of the MATLAB Code
+% 3. This code could be updated later with modifications on the below link
+%    https://github.com/shreyastaware/cnc
+% 4. This file is licensed under GNU General Public License v3.0
+% 5. Kindly attribute the owner, whenever possible 
+%    Shreyas Taware( B. Tech Mechanical Engineering, IIT Patna)
+% Note - 
+% 1. Semicolon is required in the code and before the ; there should be a 
+%    no. not a whitespace, code should be in that format
+% 2. Only one whitespace between two full CNC commands(i.e. 'N03 MO3')
+% 3. Currently only X-Y axes machining can be done, where the depth of 
+%    cut is in the Z-direction
+% 4. Here are two examples of acceptable CNC Code Lines - 
+% Example 1 - 
+% N06 G01 X50.0 F10.0;
+% Example 2 - 
+% G0 X30 Y-30 Z-10;
 
 tic;
 clc; clearvars; close all;
-filename = 'code4.txt';
+filename = 'code5.txt';
 fid = fopen(filename);
 
 C = textscan(fid, '%s', 'delimiter', '\n');
@@ -35,7 +50,7 @@ interpolator_position = [];
 
 for i = colon(1, size(codelines(:,1), 1))
     
-    codecommands = strsplit(codelines(i,:),';');
+    codecommands = strsplit(codelines(i,:),';'); 
     codecommands = codecommands{1}; % also can use codecommands(2) = [];
     codecommands = strsplit(codecommands);
     
