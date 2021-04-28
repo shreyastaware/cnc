@@ -23,7 +23,7 @@
 
 tic;
 clc; clearvars; close all;
-filename = 'code5.txt';
+filename = '../code5.txt';
 fid = fopen(filename);
 
 C = textscan(fid, '%s', 'delimiter', '\n');
@@ -380,11 +380,10 @@ for l = colon(1, cad_model_counter)
         title('Interpolation Graph');
         xlabel('X Coordinates');
         ylabel('Y Coordinates');
-        zlabel('Z Coordinates');
+        % zlabel('Z Coordinates');
         % axis([-60 60 -10 80 -20 20]);
         daspect([1 1 1]);
-        plot3(model_surface{l}(:,1),model_surface{l}(:,2), ...
-            model_surface{l}(:,3),'r-');
+        plot(model_surface{l}(:,1),model_surface{l}(:,2), 'r-');
     end
     
     if any(model_surface{1}(:,3))
